@@ -43,7 +43,7 @@ class Bottles
 EOF
   end
 
-  def verses(*numbers)
-    numbers.map { |n| verse(n) }.join("\n")
+  def verses(from, to)
+    (to..from).to_a.reverse.map { |n| verse(n) }.join("\n")
   end
 end
