@@ -1,8 +1,14 @@
+class Group < Struct.new(:number)
+  def to_s
+    (number == 1) ? "#{number} bottle" : "#{number} bottles"
+  end
+end
+
 class Bottles
   def verse(number)
     <<-EOF
-#{number} bottles of beer on the wall, #{number} bottles of beer.
-Take one down and pass it around, #{number - 1} bottles of beer on the wall.
+#{Group.new(number)} of beer on the wall, #{Group.new(number)} of beer.
+Take one down and pass it around, #{Group.new(number - 1)} of beer on the wall.
 EOF
   end
 end
