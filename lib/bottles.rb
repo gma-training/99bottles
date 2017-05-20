@@ -46,4 +46,8 @@ EOF
   def verses(from, to)
     (to..from).to_a.reverse.map { |n| verse(n) }.join("\n")
   end
+
+  def song
+    verses(99, 0)
+  end
 end
