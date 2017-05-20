@@ -1,36 +1,62 @@
-class Bottle < Struct.new(:number)
-  def to_s
-    case number
-    when 0
+class Bottle
+  class NoMoreStrategy < Struct.new(:number)
+    def action
+      'Go to the store and buy some more'
+    end
+
+    def to_s
       'no more bottles'
-    when 1
+    end
+
+    def next
+      Bottle.new(99)
+    end
+  end
+
+  class LastBottleStrategy < Struct.new(:number)
+    def action
+      "Take it down and pass it around"
+    end
+
+    def to_s
       '1 bottle'
-    else
+    end
+
+    def next
+      Bottle.new(number - 1)
+    end
+  end
+
+  class MultipleBottlesStrategy < Struct.new(:number)
+    def action
+      "Take one down and pass it around"
+    end
+
+    def to_s
       "#{number} bottles"
     end
-  end
 
-  def pronoun
-    case number
-    when 1
-      'it'
-    else
-      'one'
+    def next
+      Bottle.new(number - 1)
     end
   end
 
-  def action
-    case number
-    when 0
-      'Go to the store and buy some more'
-    else
-      "Take #{pronoun} down and pass it around"
-    end
-  end
+  extend Forwardable
 
-  def next
-    next_number = (number == 0) ? 99 : number - 1
-    Bottle.new(next_number)
+  def_delegators :@strategy, :action, :next, :to_s
+
+  attr_reader :number
+
+  def initialize(number)
+    @number = number
+    @strategy = case number
+                when 0
+                  NoMoreStrategy.new(number)
+                when 1
+                  LastBottleStrategy.new(number)
+                else
+                  MultipleBottlesStrategy.new(number)
+                end
   end
 end
 
