@@ -42,4 +42,8 @@ class Bottles
 #{bottle.action}, #{bottle.next} of beer on the wall.
 EOF
   end
+
+  def verses(*numbers)
+    numbers.map { |n| verse(n) }.join("\n")
+  end
 end
