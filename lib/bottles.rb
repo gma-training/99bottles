@@ -19,8 +19,18 @@ class Bottle < Struct.new(:number)
     end
   end
 
+  def action
+    case number
+    when 0
+      'Go to the store and buy some more'
+    else
+      "Take #{pronoun} down and pass it around"
+    end
+  end
+
   def next
-    Bottle.new(number - 1)
+    next_number = (number == 0) ? 99 : number - 1
+    Bottle.new(next_number)
   end
 end
 
@@ -28,8 +38,8 @@ class Bottles
   def verse(number)
     bottle = Bottle.new(number)
     <<-EOF
-#{bottle} of beer on the wall, #{bottle} of beer.
-Take #{bottle.pronoun} down and pass it around, #{bottle.next} of beer on the wall.
+#{bottle.to_s.capitalize} of beer on the wall, #{bottle} of beer.
+#{bottle.action}, #{bottle.next} of beer on the wall.
 EOF
   end
 end
