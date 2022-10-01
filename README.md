@@ -1,23 +1,13 @@
 # 99 Bottles
 
-## Installing Ruby
+The files in this repository accompany the book [99 Bottles of OOP] by Sandi Metz and Katrina Owen.
 
-### Windows
+[99 Bottles of OOP]: https://sandimetz.com/99bottles
 
-There's an installer, it's easy.
-http://rubyinstaller.org/
+I worked through a few exercises as I was reading it, adding my code for each exercise in a separate branch.
 
-### Mac
+Browse my commits for each exercise:
 
-Newer macs ship with a usable version of Ruby.
-
-Try `ruby -v` in a terminal window, and if it's 1.9.x or 2.x you're fine.
-
-http://www.railstutorial.org/book/beginning#sec-install_ruby
-http://tutorials.jumpstartlab.com/topics/environment/environment.html
-http://docs.railsbridge.org/installfest/macintosh
-
-### Linux
-
-Ubuntu: http://docs.railsbridge.org/installfest/linux
-https://www.ruby-lang.org/en/installation/
+- [Exercise 1](https://github.com/gma/99bottles/compare/master...exercise-1)
+- [Chapter 3](https://github.com/gma/99bottles/compare/master...chapter-3)
+- [Chapter 4](https://github.com/gma/99bottles/compare/master...chapter-4)
